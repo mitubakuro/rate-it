@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router, Link} from 'react-router-dom'
 import styled from 'styled-components'
+import Rating from '../Rating/Rating'
 
 const Card = styled.div`
   border: 1px solid #efefef;
@@ -56,7 +57,7 @@ const Grid =(props)=>{
         <img src={props.attributes.image_url} alt={props.attributes.name} />
       </ItemLogo>
       <ItemName>{props.attributes.name}</ItemName>
-      <div className="item-score">{props.attributes.avg_score}</div>
+      <Rating score={props.attributes.avg_score}/>
       <LinkWrapper>
         <Link to={`/items/${props.attributes.slug}`}>詳細</Link>
       </LinkWrapper>

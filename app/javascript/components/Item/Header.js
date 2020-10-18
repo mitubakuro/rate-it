@@ -34,7 +34,7 @@ const Header=(props)=>{
       <div>
         <UserReviewCount>{total} 人のレビューがあります</UserReviewCount>
         <div className="starRating"></div>
-        <TotalOutOf>{avg_score} out of 5</TotalOutOf>
+        <TotalOutOf>評価：{avg_score}点／５点 </TotalOutOf>
       </div>
     </Wrapper>
   )

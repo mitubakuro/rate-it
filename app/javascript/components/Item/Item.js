@@ -3,6 +3,7 @@ import axios from 'axios'
 import Header from './Header'
 import styled from 'styled-components'
 import ReviewForm from './ReviewForm'
+import Review from './Review'
 
 const Wrapper= styled.div`
   margin: 0 auto;
@@ -59,6 +60,38 @@ const Item =(props)=>{
   }
   const handleSubmit=(e)=>{
     e.preventDefault()
+
+    const csrfToken= document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN']= csrfToken
+
+    const item_id =parseInt(item.data.id)
+    axios.post('/api/v1/reviews', {review, item_id})
+    .then(resp=>{
+      // スプレッド構文でresp.dataをコピーする
+      const included=[...item.included, resp.data.data]
+      setItem({...item, included})
+      setReview({title: '', description: '', score: 0})
+    })
+    .catch(resp=>{})
+  }
+
+  const setRating=(score, e)=>{
+    e.preventDefault
+
+    setReview({...review, score})
+  }
+
+  let reviews
+  if(loaded && item.included){
+    reviews = item.included.map((box, index)=>{
+      
+      return(
+        <Review
+          key={index}
+          attributes={box.attributes}
+        />
+      )
+    })
   }
 
 
@@ -73,12 +106,13 @@ const Item =(props)=>{
                 reviews={item.included}
               />
           </Main> 
-          <div className="reviews"></div>
+          {reviews}
         </Column>
         <Column>
           <ReviewForm
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            setRating={setRating}
             attributes={item.data.attributes}
             review={review}
           />
