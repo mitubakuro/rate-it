@@ -67,7 +67,7 @@ const Item =(props)=>{
     const item_id =parseInt(item.data.id)
     axios.post('/api/v1/reviews', {review, item_id})
     .then(resp=>{
-      // スプレッド構文でresp.dataをコピーする
+      // スプレッド構文でresp.data.dataをコピーする
       const included=[...item.included, resp.data.data]
       setItem({...item, included})
       setReview({title: '', description: '', score: 0})
