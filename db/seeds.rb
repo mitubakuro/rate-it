@@ -4,29 +4,21 @@
 
 items= Item.create([
   { 
-    name: "United Airlines",
-    image_url: "https://open-flights.s3.amazonaws.com/United-Airlines.png"
+    name: "chicken",
+    image_url: "/assets/4345731.jpg"
   }, 
   { 
-    name: "Southwest",
-    image_url: "https://open-flights.s3.amazonaws.com/Southwest-Airlines.png"
+    name: "kawaii cat",
+    image_url: "/assets/neko_image-1024x856.jpg"
   },
   { 
-    name: "Delta",
-    image_url: "https://open-flights.s3.amazonaws.com/Delta.png" 
+    name: "green sight",
+    image_url: "/assets/OGA1IP0.jpg" 
   }, 
   { 
-    name: "Alaska Airlines",
-    image_url: "https://open-flights.s3.amazonaws.com/Alaska-Airlines.png" 
+    name: "upsidedown",
+    image_url: "/assets/upsidedown_cat.jpg" 
   }, 
-  { 
-    name: "JetBlue",
-    image_url: "https://open-flights.s3.amazonaws.com/JetBlue.png" 
-  }, 
-  { 
-    name: "American Airlines",
-    image_url: "https://open-flights.s3.amazonaws.com/American-Airlines.png" 
-  }
 ])
 
 reviews = Review.create([
