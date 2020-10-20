@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   before_create :slugfy
   def slugfy
-    self.slug = name.parameterize
+    self.slug = name
   end
 
   def avg_score

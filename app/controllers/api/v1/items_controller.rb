@@ -3,18 +3,21 @@ module Api
     class ItemsController < ApplicationController
       protect_from_forgery with: :null_session
 
+      # GET /api/v1/items
       def index
         items = Item.all
 
         render json: ItemSerializer.new(items, options).serialized_json
       end
 
+      # GET /api/v1/items/:slug
       def show
         item = Item.find_by(slug: params[:slug])
 
         render json: ItemSerializer.new(item, options).serialized_json
       end
 
+      # POST /api/v1/items
       def create
         item = Item.new(item_params)
         if item.save
@@ -24,6 +27,7 @@ module Api
         end
       end
 
+      # PATCH /api/v1/items/:slug
       def update
         item = Item.find_by(slug: params[:slug])
         if item.update(item_params)
@@ -33,6 +37,7 @@ module Api
         end
       end
 
+      # DELETE /api/v1/items/:slug
       def destroy
         item = Item.find_by(slug: params[:slug])
         if item.destroy

@@ -38,10 +38,10 @@ const Item =(props)=>{
   const [item, setItem]=useState({})
   const [review, setReview]=useState({})
   const [loaded, setLoaded]=useState(false)
+  const slug = props.match.params.slug
+  const url = `/api/v1/items/${slug}`
 
   useEffect(()=>{
-    const slug = props.match.params.slug
-    const url = `/api/v1/items/${slug}`
 
     axios.get(url)
     .then(resp=> {
@@ -56,8 +56,9 @@ const Item =(props)=>{
     e.preventDefault()
 
     setReview(Object.assign({}, review, {[e.target.name]: e.target.value}))
-    console.log('review:', review)
+    // console.log('review:', review)
   }
+  // レビュー作成の処理を変数に代入
   const handleSubmit=(e)=>{
     e.preventDefault()
 
@@ -71,13 +72,29 @@ const Item =(props)=>{
       const included=[...item.included, resp.data.data]
       setItem({...item, included})
       setReview({title: '', description: '', score: 0})
+      alert('レビューを投稿しました')
     })
     .catch(resp=>{})
   }
 
+  // レビュー削除の処理を変数に代入
+  const handleDestroy = (id, e) => {
+    e.preventDefault()
+    confirm('削除しますか？')
+    axios.delete(`/api/v1/reviews/${id}`)
+    .then((data) => {
+      console.log(data)
+      return axios.get(url)
+  })
+    .then( () => {
+      let reviews = [...item.reviews]
+      setItem({ ...item, reviews })
+    })
+    .catch( data => console.log('Error', data) )
+  }
+
   const setRating=(score, e)=>{
     e.preventDefault
-
     setReview({...review, score})
   }
 
@@ -88,7 +105,9 @@ const Item =(props)=>{
       return(
         <Review
           key={index}
+          id={box.id}
           attributes={box.attributes}
+          handleDestroy={handleDestroy}
         />
       )
     })

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Rating from '../Rating/Rating'
 
 const Wrapper = styled.div`
   padding: 50px 100px 50px 0px;
@@ -33,7 +34,7 @@ const Header=(props)=>{
       <h1><img src={image_url} alt={name} />{name}</h1>
       <div>
         <UserReviewCount>{total} 人のレビューがあります</UserReviewCount>
-        <div className="starRating"></div>
+        <Rating score={avg_score}/>
         <TotalOutOf>評価：{avg_score}点／５点 </TotalOutOf>
       </div>
     </Wrapper>

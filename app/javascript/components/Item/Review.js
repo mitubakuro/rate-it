@@ -20,6 +20,15 @@ const RatingScore = styled.div `
 
 `
 
+const Icon = styled.button`
+  box-shadow: none;
+  border-radius: 4px;
+  margin: 0 4px;
+  i {
+    font-size: 18px;
+  }
+`
+
 const Title=styled.div `
   padding: 20px 0 0 0;
   font-size: 18px;
@@ -40,6 +49,7 @@ const Review = (props)=>{
       </RatingContainer>
       <Title>{title}</Title>
       <Description>{description}</Description>
+      <Icon onClick={props.handleDestroy.bind(this, props.id)}> <i className="fa fa-trash"></i></Icon>
     </Card>
   )
 }

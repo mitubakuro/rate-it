@@ -3,6 +3,7 @@ module Api
     class ReviewsController < ApplicationController
       protect_from_forgery with: :null_session
 
+      # POST /api/v1/reviews
       def create
         review = set_item.reviews.new(review_params)
         if review.save
@@ -12,6 +13,7 @@ module Api
         end
       end
 
+      # DELETE /api/v1/reviews/:id
       def destroy
         review = Review.find(params[:id])
 

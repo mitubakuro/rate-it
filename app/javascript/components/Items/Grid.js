@@ -12,16 +12,16 @@ const ItemLogo = styled.div`
   height: 50px;
   padding-top: 10px;
   img {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 80%;
     border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 100%;
+    object-fit: cover;
   }
 `
 
 
 const ItemName = styled.div`
-  padding: 20px 0 10px 0;
+  padding: 60px 0 10px 0;
 `
 
 const LinkWrapper = styled.div`

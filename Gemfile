@@ -51,3 +51,5 @@ end
 
 gem 'fast_jsonapi'
 gem 'pry-rails'
+
+gem 'rails-i18n'

@@ -4,19 +4,19 @@
 
 items= Item.create([
   { 
-    name: "chicken",
+    name: "とりにく",
     image_url: "/assets/4345731.jpg"
   }, 
   { 
-    name: "kawaii cat",
+    name: "かわいい猫",
     image_url: "/assets/neko_image-1024x856.jpg"
   },
   { 
-    name: "green sight",
+    name: "緑の景色",
     image_url: "/assets/OGA1IP0.jpg" 
   }, 
   { 
-    name: "upsidedown",
+    name: "さかさま",
     image_url: "/assets/upsidedown_cat.jpg" 
   }, 
 ])

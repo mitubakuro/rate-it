@@ -2,6 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react'
 import axios from 'axios'
 import Grid from './Grid'
 import styled from 'styled-components'
+import media from "styled-media-query";
 
 const Home = styled.div`
   text-align: center;
@@ -9,7 +10,7 @@ const Home = styled.div`
   margin: 0 auto;
 `
 const Header = styled.div`
-  padding: 100px 100px 10px 100px;
+  padding: 20px 100px 10px 100px;
   
   h1{
     font-size: 42px;
@@ -22,11 +23,30 @@ const Subheader = styled.div`
 `
 
 const Grids = styled.div`
+${media.greaterThan("large")`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   width: 100%;
-  padding: 20px;
+  padding: 20px 0;
+  `}
+
+  ${media.between("medium", "large")`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+  `}
+
+  ${media.lessThan("medium")`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+  `}
+  
 `
 
 const Items =()=>{
