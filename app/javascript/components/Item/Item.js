@@ -38,11 +38,11 @@ const Item =(props)=>{
   const [item, setItem]=useState({})
   const [review, setReview]=useState({})
   const [loaded, setLoaded]=useState(false)
-  const slug = props.match.params.slug
-  const url = `/api/v1/items/${slug}`
-
+  
   useEffect(()=>{
-
+    const slug = props.match.params.slug
+    const url = `/api/v1/items/${slug}`
+    
     axios.get(url)
     .then(resp=> {
       setItem(resp.data)
